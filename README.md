@@ -12,6 +12,7 @@ then run:
 java -jar ./target/TaskForLAT2025-0.0.1-SNAPSHOT.jar
 
 Available endpoints with example curls in Windows PowerShell if you are accessing the api via localhost:
+
 GET /api/fundraising/box - returns all boxes, with their ids and whether it is empty, assigned
 
 curl.exe -X GET http://127.0.0.1:8080/api/fundraising/box
@@ -37,9 +38,11 @@ PUT /box/{id} - adds to the box of id the value specified in the content of the 
 curl.exe -X PUT http://127.0.0.1:8080/api/fundraising/box/1 -H "Content-Type: application/json" -d '{""currency"": ""PLN"", ""amount"": ""100.00""}'
 
 There are two endpoints to handle value transfer and, by extension, currency conversion. To use the external one (which uses Exchange-API) you need to add your own key in application.properties
+
 PUT /api/fundraising/box/{id}/transfer/external - transfers all funds from the box into the account, after converting them to the proper currency using the external converter
 
 curl.exe -X PUT http://127.0.0.1:8080/api/fundraising/box/1/transfer/external
 
 PUT /api/fundraising/box/{id}/transfer/internal - transfers all funds from the box into the account, after converting them to the proper currency using the internal converter with hardcoded exchange rates
+
 curl.exe -X PUT http://127.0.0.1:8080/api/fundraising/box/1/transfer/internal
